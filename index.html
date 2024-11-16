@@ -2,12 +2,114 @@
 <html lang="in">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>Judul halaman</title>
+    <link rel="stylesheet" href="assets/css/custom.css">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid d-flex">
+        <!-- Sidebar (Hanya tampil di desktop dan tablet) -->
+        <div class="sidebar min-vh-100 col-md-2 p-3 d-none d-md-block">
+            <img src="assets/images/logo.png" alt="logo" class="logo">
+            <hr>
+            <!-- Menu Utama -->
+            <h5 class="fw-bold mb-3">Main Menu</h5>
+            <hr class="my-4" />
+            <ul class="list-unstyled">
+                <li><a href="{{ '/random.html' | relative_url }}" class="text-decoration-none">
+                    <i class="bi bi-shuffle me-2"></i> Random</a></li>
+                <li><a href="{{ '/archives.html' | relative_url }}" class="text-decoration-none">
+                    <i class="bi bi-archive me-2"></i> Archives</a></li>
+                <li><a href="{{ '/recent-change.html' | relative_url }}" class="text-decoration-none">
+                    <i class="bi bi-clock-history me-2"></i> Recent Change</a></li>
+                <li><a href="{{ '/last-modified.html' | relative_url }}" class="text-decoration-none">
+                    <i class="bi bi-pencil-square me-2"></i> Last Modified</a></li>
+            </ul>
+            <hr class="my-4" />
+        </div>
+
+        <!-- Konten Utama dan Offcanvas Sidebar -->
+        <div class="container-fluid">
+            <header class="container">
+                <header class="header">
+                    <div class="clock" id="clock"></div>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="read-tab" data-bs-toggle="tab" data-bs-target="#read-tab-pane" type="button" role="tab" aria-controls="read-tab-pane" aria-selected="true">Read</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="about" data-bs-toggle="tab" data-bs-target="#about-pane" type="button" role="tab" aria-controls="about-pane" aria-selected="false">About</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+                        </li>
+                    </ul>
+                </header>
+            </header>
+            <!-- Tombol untuk membuka sidebar pada mobile -->
+            <button class="btn d-block d-md-none custom-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                <i class="bi bi-arrow-right-circle-fill"></i>
+            </button>
+            <div class="tab-content p-4" id="myTabContent">
+                <div class="tab-pane fade show active" id="read-tab-pane" role="tabpanel" aria-labelledby="read-tab" tabindex="0">
+                    <main>
+                        <article>
+                            {{ content }}
+                        </article>
+                    </main>
+                </div>
+                <div class="tab-pane fade" id="about-pane" role="tabpanel" aria-labelledby="about-tab" tabindex="0">
+                    <main>
+                        <article>
+                            {% include tabs/about.html %}
+                        </article>
+                    </main>
+                </div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                    <main>
+                        <article>
+                            {% include tabs/contact.html %}
+                        </article>
+                    </main>
+                </div>
+              </div>
+            <!-- Footer -->
+            <footer class="p-4 text-center">
+                <div class="container">
+                    <p class="mb-0">© 2024 Your Name - Semua Hak Dilindungi.</p>
+                    <p><a href="#">Kebijakan Privasi</a> | <a href="#">Ketentuan Layanan</a></p>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Offcanvas Sidebar -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+            <div class="offcanvas-header container-fluid">
+                <img src="assets/images/logo.png" alt="logo" class="logo">
+            </div>
+            <div class="offcanvas-body">
+                <h5 class="fw-bold mb-3">Main Menu</h5>
+                <hr class="my-4" />
+                <ul class="list-unstyled">
+                    <li><a href="{{ '/random.html' | relative_url }}" class="text-decoration-none">
+                        <i class="bi bi-shuffle me-2"></i> Random</a></li>
+                    <li><a href="{{ '/archives.html' | relative_url }}" class="text-decoration-none">
+                        <i class="bi bi-archive me-2"></i> Archives</a></li>
+                    <li><a href="{{ '/recent-change.html' | relative_url }}" class="text-decoration-none">
+                        <i class="bi bi-clock-history me-2"></i> Recent Change</a></li>
+                    <li><a href="{{ '/last-modified.html' | relative_url }}" class="text-decoration-none">
+                        <i class="bi bi-pencil-square me-2"></i> Last Modified</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
+
+    <!-- Tambahkan JS Bootstrap -->
     <script src="assets/js/bootstrap.bundle.js"></script>
+    <script src="assets/js/clock.js"></script>
 </body>
 </html>

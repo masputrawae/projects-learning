@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+/* Tambahkan sedikit styling untuk sidebar */
+.sidebar {
+    border-right: 1px solid transparent;
+    border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0),rgb(0, 0, 255), rgba(0, 0, 0, 0.648)) 1;
+
+}
+.sidebar a {
+    text-decoration: none;
+}
+.sidebar a:hover {
+    color: brown;
+}
+
+.custom-main {
+    border-top: 1px solid rgba(0, 0, 0, 0.328);
+    border-right: 1px solid rgba(0, 0, 0, 0.328);
+}
+
+.logo {
+    width: 100%; 
+    display: block; 
+    margin: auto;
+    border-radius: 50%;
+}
+
+.custom-button {
+    position: fixed;  /* Membuat tombol tetap di posisi atas */
+    bottom: 1px;        /* Jarak dari bagian atas layar */
+    right: 1px;      /* Jarak dari sisi kanan layar */
+    z-index: 1050;    /* Menjaga tombol di atas elemen lain */
+}
