@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>MediaWiki Layout dengan Sidebar (Desktop dan Mobile) - Bootstrap 5.3.3</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Main container setup */
+    .main-container {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      background-color: #007bff;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 3px solid #0056b3;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    .header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    /* Main content area */
+    .content-area {
+      padding: 20px;
+    }
+    .content-area h2 {
+      margin-top: 0;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+      border-top: 2px solid #ddd;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background-color: transparent;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+      content: "»";
+    }
+
+    /* Mobile Offcanvas Sidebar */
+    .offcanvas {
+      width: 250px;
+    }
+
+    /* Responsive Design for small screens */
+    @media (max-width: 767px) {
+      .sidebar {
+        display: none; /* Hide the main sidebar on mobile */
+      }
+
+      .offcanvas {
+        display: block; /* Display offcanvas sidebar on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Header -->
+    <header class="header">
+      <h1>WikiLayout</h1>
+      <p>Dokumentasi dan Pengetahuan</p>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container-fluid content">
+      <div class="row">
+        <!-- Sidebar for Desktop (Always visible) -->
+        <nav id="sidebar" class="col-md-3 col-lg-2 sidebar">
+          <h4>Daftar Isi</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Halaman Utama</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Panduan Pengguna</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tutorial</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Kontak</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-4 content-area">
+          <!-- Button to toggle offcanvas sidebar (only visible on mobile) -->
+          <button class="btn btn-primary d-block d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+            Toggle Sidebar
+          </button>
+
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">Halaman Utama</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Topik Utama</li>
+            </ol>
+          </nav>
+
+          <h2>Selamat Datang di WikiLayout</h2>
+          <p>Ini adalah contoh halaman utama dengan layout yang mirip dengan MediaWiki menggunakan Bootstrap.</p>
+          <hr>
+          <h3>Topik Utama</h3>
+          <p>Informasi mendalam tentang cara menggunakan sistem ini untuk berbagai keperluan.</p>
+          <p>Dengan tata letak ini, Anda dapat mengelola banyak artikel dan memudahkan navigasi untuk pembaca.</p>
+        </main>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>© 2024 WikiLayout - Hak Cipta Dilindungi</p>
+    </footer>
+  </div>
+
+  <!-- Offcanvas Sidebar (For Mobile) -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 id="offcanvasSidebarLabel">Daftar Isi</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Halaman Utama</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Panduan Pengguna</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Tutorial</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Kontak</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
